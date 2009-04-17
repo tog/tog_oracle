@@ -1,5 +1,7 @@
 class Member::Oracle::QuestionsController < Member::BaseController
-  def new
-    
+  def new    
+  end
+  
+  def create
   end
 end

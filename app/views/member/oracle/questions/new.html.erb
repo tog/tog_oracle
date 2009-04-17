@@ -1,0 +1,7 @@
+<h2>New question</h2>
+
+<% form_for :question, @question, :url => member_questions_path do |f| -%>
+  <%= f.label :body, "Question" %>
+  <%= f.input :body %>
+  <%= f.submit "Submit question" %>
+<% end -%>
