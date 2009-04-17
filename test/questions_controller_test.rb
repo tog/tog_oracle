@@ -21,7 +21,7 @@ class Member::Oracle::QuestionsControllerTest < ActionController::TestCase
         @controller.stubs(:login_required).returns(true)
         post :create, :body => "Where is the fountain of eternal youth?"
       end
-      should_respond_with :success
+      should_redirect_to "oracle_questions_path"
     end
     
   end
