@@ -11,5 +11,6 @@ class Test::Unit::TestCase
   def create_user_without_validation(opts={})
     user = User.new(opts)
     user.save(false)
+    user
   end
 end

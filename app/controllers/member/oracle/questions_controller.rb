@@ -8,10 +8,15 @@ class Member::Oracle::QuestionsController < Member::BaseController
     question = ::Oracle::Question.new(params[:question])
     if question.save
       flash[:ok] = "Question created"
-      redirect_to oracle_questions_path
+      redirect_to member_oracle_questions_path
     else
       flash[:error] = "Error during question creation"
-      render :new
+      render :action => :new
     end
   end
+  
+  def index
+    @questions = current_user.questions
+  end
+  
 end

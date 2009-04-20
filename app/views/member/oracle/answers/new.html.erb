@@ -1,0 +1,8 @@
+<h2><%= @question.body %></h2>
+
+<% form_for :answer, @answer, :url => member_oracle_question_answers_path do |f| -%>
+  <%= f.label :body, "Answer" %>
+  <%= f.text_field :body %>
+  
+  <%= f.submit "Submit" %>
+<% end -%>
