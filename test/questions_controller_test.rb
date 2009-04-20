@@ -21,7 +21,17 @@ class Member::Oracle::QuestionsControllerTest < ActionController::TestCase
         @controller.stubs(:login_required).returns(true)
         post :create, :body => "Where is the fountain of eternal youth?"
       end
-      should_redirect_to "oracle_questions_path"
+      should_set_the_flash_to "Question created"
+      should_redirect_to "the list of the user's questions" { oracle_questions_path }
+    end
+
+    context "failing creation" do
+      setup do
+        @controller.stubs(:current_user).returns(@user)
+        post :create
+      end
+      should_set_the_flash_to "Error during question creation"
+      should_render_template :new
     end
     
   end
