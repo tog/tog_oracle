@@ -11,6 +11,9 @@ class Member::Oracle::AnswersController < Member::BaseController
     if @answer.save
       flash[:ok] = "Answer posted."
       redirect_to oracle_question_answers_path(@question)
+    else
+      flash[:error] = "Error during answer creation."
+      render :action => :new
     end
   end
 

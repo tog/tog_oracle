@@ -28,6 +28,14 @@ class Member::Oracle::AnswersControllerTest < ActionController::TestCase
       should_set_the_flash_to "Answer posted."
     end
     
+    context "when failing to be created" do
+      setup do
+        post :create, :question_id => @question, :answer => { :body => "" }
+      end
+      should_render_template :new
+      should_set_the_flash_to "Error during answer creation."
+    end
+    
   end        
 end
 
