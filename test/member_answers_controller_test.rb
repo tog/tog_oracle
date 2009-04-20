@@ -8,16 +8,26 @@ class Member::Oracle::AnswersControllerTest < ActionController::TestCase
       @response   = ActionController::TestResponse.new
       
       @user = create_user_without_validation
-      @controller.stubs(:current_user).returns(@user)      
+      @controller.stubs(:current_user).returns(@user)
+      
+      @question = ::Oracle::Question.create(:body => "What is the meaning of life?") 
     end
-  end
     
-  context "new" do
-    setup do
-      get :new, :question_id => 1
+    context "new" do
+      setup do
+        get :new, :question_id => @question
+      end
+      should_respond_with :success
     end
-    should_respond_with :success
-  end
+
+    context "when created successfully" do
+      setup do
+        post :create, :question_id => @question, :answer => { :body => "42" }
+      end
+      should_redirect_to("the list of answers to that question") { oracle_question_answers_path(@question) }
+      should_set_the_flash_to "Answer posted."
+    end
     
+  end        
 end
 
