@@ -7,7 +7,8 @@ class Member::Oracle::AnswersController < Member::BaseController
   end
 
   def create
-    @answer = ::Oracle::Answer.new(params[:answer])
+    answer_params = params[:answer].merge(:question => @question)
+    @answer = ::Oracle::Answer.new(answer_params)
     if @answer.save
       flash[:ok] = "Answer posted."
       redirect_to oracle_question_answers_path(@question)

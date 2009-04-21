@@ -1,1 +1,13 @@
-hello!
+<h2>Answers for <%= @question.body %></h2>
+<%#= question_and_list_of_answers(@question, @answers) %>
+<%#= answer_list(@question, @answers) %>
+<% if current_user == @question.user %>
+  <% form_for @question do |f| -%>
+    <%= render :partial => "answer_for_publisher", :collection => @answers, :as => :answer %>
+    <%= f.submit "Submit" %>
+  <% end -%>
+<% else %>
+  <%= render :partial => @answers %>
+<% end %>
+
+<%= link_to "Answer this question", new_member_oracle_question_answer_path(@question) %>

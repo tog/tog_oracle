@@ -1,0 +1,6 @@
+<% form_for(:question, question, :url => oracle_questions_path) do |f| %>
+  <% content_tag(:ul) do %>
+    <%= render :partial => "answer_for_publisher", :collection => answers, :as => :answer %>
+  <% end %>
+  <%= f.submit "Submit" %>
+<% end %>

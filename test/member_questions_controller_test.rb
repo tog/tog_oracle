@@ -13,7 +13,6 @@ class Member::Oracle::QuestionsControllerTest < ActionController::TestCase
     
     context "new" do
       setup do
-        @controller.stubs(:login_required).returns(true)
         get :new
       end
       should_respond_with :success
@@ -29,7 +28,6 @@ class Member::Oracle::QuestionsControllerTest < ActionController::TestCase
 
     context "failing creation" do
       setup do
-        @controller.stubs(:login_required).returns(true)
         post :create, :question => { :body => "" }
       end
       should_set_the_flash_to "Error during question creation"

@@ -3,6 +3,7 @@ class Oracle::AnswersController < ApplicationController
   before_filter :find_question
 
   def index
+    @answers = @question.answers
   end
 
   private
