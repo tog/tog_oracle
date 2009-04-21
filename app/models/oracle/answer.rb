@@ -9,6 +9,10 @@ class Oracle::Answer < ActiveRecord::Base
     self.suitable = true
   end
 
+  def make_unsuitable!
+    self.suitable = false
+  end
+  
   def suitable?
     self.suitable
   end

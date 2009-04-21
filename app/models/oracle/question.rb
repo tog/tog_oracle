@@ -13,7 +13,16 @@ class Oracle::Question < ActiveRecord::Base
 
   def suitable_answer_id=(answer_id)
     answer = ::Oracle::Answer.find(answer_id)
-    answer.make_suitable!
     self.suitable_answer = answer
+  end
+  
+  def suitable_answer=(answer)
+    return if suitable_answer == answer
+    answers.each do |a|
+      a.make_unsuitable!
+      a.save
+    end
+    answer.make_suitable!
+    answer.save
   end
 end
