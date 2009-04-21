@@ -1,0 +1,5 @@
+<h2>Q: <%= @question.body %></h2>
+<h2>A: <%= @answer.body %></h2>
+<% form_for :question, @question, :url => do_close_member_oracle_question_path(@question) do |f| -%>
+  <%= f.submit "Close question" %>
+<% end -%>
