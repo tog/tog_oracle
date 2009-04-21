@@ -1,4 +1,7 @@
 class Member::Oracle::QuestionsController < Member::BaseController
+  
+  before_filter :check_if_already_closed, :only => [:close, :do_close]
+  
   def new
     @question = ::Oracle::Question.new
   end
@@ -16,7 +19,7 @@ class Member::Oracle::QuestionsController < Member::BaseController
   end
   
   def index
-    @questions = current_user.questions.open
+    @questions = current_user.questions.opened
   end
 
   def edit
@@ -37,6 +40,15 @@ class Member::Oracle::QuestionsController < Member::BaseController
     else
       flash[:error] = "Error when closing question"
       render :action => "close"
+    end
+  end
+  
+  protected  
+  def check_if_already_closed
+    @question = ::Oracle::Question.find(params[:id])
+    if @question.closed?
+      flash[:error] = "Question already closed"
+      redirect_to member_oracle_questions_path
     end
   end
 end

@@ -6,7 +6,7 @@ class Oracle::Question < ActiveRecord::Base
 
   validates_presence_of :body
 
-  named_scope :open, :conditions => { :open => true }
+  named_scope :opened, :conditions => { :opened => true }
 
   def suitable_answer_id
     sa = self.suitable_answer
@@ -28,15 +28,15 @@ class Oracle::Question < ActiveRecord::Base
     answer.save
   end
   
-  def open?
-    self.open
+  def opened?
+    self.opened
   end
   
   def closed?
-    !self.open
+    !self.opened
   end
   
   def close!
-    self.open = false
+    self.opened = false
   end
 end
