@@ -1,13 +1,18 @@
 <h2>Answers for <%= @question.body %></h2>
 <%#= question_and_list_of_answers(@question, @answers) %>
 <%#= answer_list(@question, @answers) %>
+<!-- TODO: this would be nicer if the logic was moved to a helper -->
 <% if current_user == @question.user %>
   <% form_for @question do |f| -%>
-    <%= render :partial => "answer_for_publisher", :collection => @answers, :as => :answer %>
+    <ul>
+      <%= render :partial => "answer_for_publisher", :collection => @answers, :as => :answer %>
+    </ul>
     <%= f.submit "Submit" %>
   <% end -%>
 <% else %>
-  <%= render :partial => @answers %>
+  <%= render :partial => "answer", :collection => @answers %>
 <% end %>
 
-<%= link_to "Answer this question", new_member_oracle_question_answer_path(@question) %>
+<p>
+  <%= link_to "Answer this question", new_member_oracle_question_answer_path(@question) %>
+</p>
