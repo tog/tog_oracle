@@ -23,19 +23,40 @@ class QuestionTest < Test::Unit::TestCase
       end
     end
     
-    context "closing" do
-      should "be possible after 1 hour has passed after creation but no more than 7 days" do
-        @question.stubs(:created_at).returns(1.day.ago)
-        assert_true @question.closeable?
+    context "when assigned a suitable answer" do
+      setup do
+        answer = ::Oracle::Answer.create(:body => "42")
+        @question.suitable_answer = answer
+        # @question.save
       end
-      should "not be possible if 1 hour has not passed since the question's creation" do
-        @question.stubs(:created_at).returns(3.minutes.ago)
-        assert_false @question.closeable?
+      should "become closed" do
+        @question.reload
+        assert_true @question.closed?
       end
-      should "not be possible if 1 hour has not passed since the question's creation" do
-        @question.stubs(:created_at).returns(10.days.ago)
-        assert_false @question.closeable?
-      end      
     end
+      
+    should "be in answer period after at least 1 hour but no more than 7 days have passed after its creation" do
+      @question.stubs(:created_at).returns(1.day.ago)
+      assert_true @question.closeable?
+    end        
+    should "not be in answer period if less than 1 hour has passed since its creation" do
+      @question.stubs(:created_at).returns(3.minutes.ago)
+      assert_false @question.closeable?
+    end
+    should "not be in answer period if more than 7 days have passed since its creation" do
+      @question.stubs(:created_at).returns(10.days.ago)
+      assert_false @question.closeable?
+    end
+
+    should "not be overdue if less than 7 days have passed since its creation"
+      @question.stubs(:created_at).returns(1.minute.ago)
+      assert_true @question.overdue?
+    end
+    
+    should "be overdue if more than 7 days have passed since its creation"
+      @question.stubs(:created_at).returns(10.days.ago)
+      assert_true @question.overdue?
+    end
+    
   end
 end

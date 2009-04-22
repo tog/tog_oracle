@@ -1,6 +1,6 @@
 <h2>Answers for <%= @question.body %></h2>
+<%= question_status_tag(@question) %>
 <%#= question_and_list_of_answers(@question, @answers) %>
-<%#= answer_list(@question, @answers) %>
 <!-- TODO: this would be nicer if the logic was moved to a helper -->
 <% if current_user == @question.user %>
   <% form_for @question do |f| -%>

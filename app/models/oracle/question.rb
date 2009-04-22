@@ -5,7 +5,7 @@ class Oracle::Question < ActiveRecord::Base
   has_one :suitable_answer, :class_name => "Oracle::Answer", :conditions => { :suitable => true }
 
   validates_presence_of :body
-
+  before_save :close_if_has_suitable_answer
   named_scope :opened, :conditions => { :opened => true }
 
   def suitable_answer_id
@@ -42,5 +42,10 @@ class Oracle::Question < ActiveRecord::Base
   
   def closeable?
     self.created_at > 1.hour.ago && self.created_at < 7.days.ago
+  end
+  
+  private
+  def close_if_has_suitable_answer
+    self.close! unless suitable_answer.nil? || self.closed?
   end
 end
