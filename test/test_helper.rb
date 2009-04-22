@@ -1,7 +1,9 @@
 ENV["RAILS_ENV"] = "test"
 require 'rubygems'
-# require 'active_support'
-# require 'active_support/test_case'
+#FIXME: only insert this so I can run tests without clashing with rails 2.3
+gem "activesupport", "=2.2.2"
+require 'active_support'
+require 'active_support/test_case'
 
 require 'shoulda'
 require "shoulda/action_controller"

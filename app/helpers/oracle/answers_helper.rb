@@ -17,4 +17,8 @@ module AnswersHelper
       render :partial => "answer", :collection => answers
     end
   end
+  
+  def answer_this_question_link(question)
+    link_to "Answer this question", new_member_oracle_question_answer_path(question) if @question.opened?
+  end
 end
