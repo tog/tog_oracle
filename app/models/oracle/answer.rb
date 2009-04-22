@@ -14,6 +14,6 @@ class Oracle::Answer < ActiveRecord::Base
   end
   
   def suitable?
-    self.suitable
+    !!self.suitable
   end
 end

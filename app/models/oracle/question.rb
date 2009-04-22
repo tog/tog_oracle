@@ -29,14 +29,18 @@ class Oracle::Question < ActiveRecord::Base
   end
   
   def opened?
-    self.opened
+    !!self.opened
   end
   
   def closed?
-    !self.opened
+    !self.opened?
   end
   
   def close!
     self.opened = false
+  end
+  
+  def closeable?
+    self.created_at > 1.hour.ago && self.created_at < 7.days.ago
   end
 end
