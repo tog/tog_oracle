@@ -5,3 +5,7 @@
 .closed_question {
 	color: gray;
 }
+
+.suitable_answer {
+	color: green;
+}

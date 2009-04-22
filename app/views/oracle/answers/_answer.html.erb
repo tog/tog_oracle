@@ -1,1 +1,1 @@
-<li><%= answer.body %></li>
+<li class="suitable_answer"><%= answer.body %> <%= content_tag(:span, "SUITABLE") if answer.suitable? %></li>
