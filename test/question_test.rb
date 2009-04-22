@@ -27,7 +27,7 @@ class QuestionTest < ActiveSupport::TestCase
       setup do
         answer = ::Oracle::Answer.create(:body => "42")
         @question.suitable_answer = answer
-        # @question.save
+        @question.save
       end
       should "become closed" do
         @question.reload
@@ -35,32 +35,19 @@ class QuestionTest < ActiveSupport::TestCase
       end
     end
     
-    should "be closeable in answer period" do
-      @question.stubs(:in_answer_period?).returns(true)
+    should "be closeable after the initial answer period" do
+      @question.stubs(:after_initial_answer_period?).returns(true)
       assert_equal(true, @question.closeable?)
     end
     
-    should "be in answer period after at least 1 hour but no more than 7 days have passed after its creation" do
-      @question.stubs(:created_at).returns(1.day.ago)
-      assert(true, @question.in_answer_period?)
-    end        
-    should "not be in answer period if less than 1 hour has passed since its creation" do
-      @question.stubs(:created_at).returns(3.minutes.ago)
-      assert_false @question.in_answer_period?
-    end
-    should "not be in answer period if more than 7 days have passed since its creation" do
-      @question.stubs(:created_at).returns(10.days.ago)
-      assert_false @question.closeable?
-    end
-
     should "not be overdue if less than 7 days have passed since its creation" do
       @question.stubs(:created_at).returns(1.minute.ago)
-      assert_true @question.overdue?
+      assert_equal(false, @question.overdue?)
     end
     
     should "be overdue if more than 7 days have passed since its creation" do
       @question.stubs(:created_at).returns(10.days.ago)
-      assert_true @question.overdue?
+      assert_equal(true, @question.overdue?)
     end
     
   end

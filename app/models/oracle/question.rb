@@ -7,7 +7,14 @@ class Oracle::Question < ActiveRecord::Base
   validates_presence_of :body
   before_save :close_if_has_suitable_answer
   named_scope :opened, :conditions => { :opened => true }
-
+  named_scope :overdues, :conditions => { :overdue? => true }
+  
+  class << self
+    def send_close_request_for_overdues
+      overdues.each { |q| Oracle::QuestionMailer.deliver_close_question_request(q) }
+    end
+  end
+  
   def suitable_answer_id
     sa = self.suitable_answer
     sa.nil? ? nil : sa.id
@@ -28,6 +35,18 @@ class Oracle::Question < ActiveRecord::Base
     answer.save
   end
   
+  def after_initial_answer_period?
+    self.created_at > 1.hour.ago
+  end
+  
+  def closeable?
+    after_initial_answer_period?
+  end
+  
+  def overdue?
+    self.created_at > 7.days.ago
+  end
+  
   def opened?
     !!self.opened
   end
@@ -39,11 +58,7 @@ class Oracle::Question < ActiveRecord::Base
   def close!
     self.opened = false
   end
-  
-  def closeable?
-    self.created_at > 1.hour.ago && self.created_at < 7.days.ago
-  end
-  
+    
   private
   def close_if_has_suitable_answer
     self.close! unless suitable_answer.nil? || self.closed?
