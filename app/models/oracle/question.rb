@@ -36,7 +36,7 @@ class Oracle::Question < ActiveRecord::Base
   end
   
   def after_initial_answer_period?
-    self.created_at > 1.hour.ago
+    self.created_at + 1.hour < Time.now
   end
   
   def closeable?
@@ -44,7 +44,7 @@ class Oracle::Question < ActiveRecord::Base
   end
   
   def overdue?
-    self.created_at > 7.days.ago
+    self.created_at + 7.days < Time.now
   end
   
   def opened?
