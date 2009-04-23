@@ -1,7 +1,6 @@
 require File.join(File.dirname(__FILE__), 'test_helper')
 
 class QuestionTest < ActiveSupport::TestCase
-# class QuestionTest < Test::Unit::TestCase
   context "A question" do
     setup do
       @question = ::Oracle::Question.create(:body => "Life, universe?")

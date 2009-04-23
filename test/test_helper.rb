@@ -1,6 +1,7 @@
 ENV["RAILS_ENV"] = "test"
 require 'rubygems'
-#FIXME: only insert this so I can run tests without clashing with rails 2.3
+#FIXME: I only inserted this so I can run tests without clashing with rails 2.3
+# once this issue is fixed, this can safely be removed
 gem "activesupport", "=2.2.2"
 require 'active_support'
 require 'active_support/test_case'
