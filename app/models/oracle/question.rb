@@ -7,11 +7,14 @@ class Oracle::Question < ActiveRecord::Base
   validates_presence_of :body
   before_save :close_if_has_suitable_answer
   named_scope :opened, :conditions => { :opened => true }
-  named_scope :overdues, :conditions => { :overdue? => true }
   
   class << self
     def send_close_request_for_overdues
       overdues.each { |q| Oracle::QuestionMailer.deliver_close_question_request(q) }
+    end
+    
+    def overdues
+      self.all.select(&:overdue?)
     end
   end
   

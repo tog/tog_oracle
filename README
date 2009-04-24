@@ -9,5 +9,11 @@ Example
 
 Example goes here.
 
+Sending out "please close question" requests for overdue questions regularly
+============================================================================
+
+Have this added to your crontab:
+
+0 12 * * * /usr/local/bin/ruby /application/script/runner -e production 'Oracle::Question.send_close_request_for_overdues'
 
 Copyright (c) 2009 [name of plugin creator], released under the MIT license
