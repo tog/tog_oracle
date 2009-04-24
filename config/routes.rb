@@ -1,6 +1,6 @@
 namespace :member do |member|
   member.namespace :oracle do |oracle|
-    oracle.resources :questions, :member => { :close => :get, :do_close => :post } do |question| # , :shallow => true
+    oracle.resources :questions do |question| # , :shallow => true
       question.resources :answers
     end
   end

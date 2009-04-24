@@ -1,3 +1,4 @@
+* check that the question can not be closed(= a suitable answer picked) if it is <1 hour after posting the question.
 * include the tog_oracle stylesheet on tog_oracle pages
 * check that only the question's publisher can pick the suitable answer, close the question, etc.
 * add some common sense links to pages
