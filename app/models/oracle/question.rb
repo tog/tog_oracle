@@ -9,7 +9,14 @@ class Oracle::Question < ActiveRecord::Base
   named_scope :opened, :conditions => { :opened => true }
   
   class << self
-    def send_close_request_for_overdues
+    def close_overdues_and_send_notifications
+      close_overdues
+      send_close_requests_for_overdues
+    end
+    def close_overdues
+      overdues.each { |q| q.close! }
+    end
+    def send_close_requests_for_overdues
       overdues.each { |q| Oracle::QuestionMailer.deliver_close_question_request(q) }
     end
     
