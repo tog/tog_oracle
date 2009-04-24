@@ -1,6 +1,7 @@
 class Member::Oracle::AnswersController < Member::BaseController
 
   before_filter :find_question
+  before_filter :check_if_question_closed
 
   def new
     @answer = ::Oracle::Answer.new
@@ -21,5 +22,11 @@ class Member::Oracle::AnswersController < Member::BaseController
   private
   def find_question
     @question = ::Oracle::Question.find(params[:question_id])
+  end
+  def check_if_question_closed
+    if @question.closed?
+      flash[:error] = "You cannot answer a question that is already closed."
+      redirect_to oracle_question_answers_path(@question)
+    end
   end
 end
