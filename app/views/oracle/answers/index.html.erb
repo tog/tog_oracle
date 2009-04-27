@@ -13,7 +13,7 @@
   <%= render :partial => "answer", :collection => @answers %>
 <% end %>
 
-<p>
-  <%= answer_this_question_link(@question) %>
-  <%= link_to 'Back to list of questions', oracle_questions_path %>
-</p>
+<p><%= answer_this_question_link(@question) %></p>
+<p><%= link_to 'Back to my questions', member_oracle_questions_path %></p>
+<p><%= link_to 'Back to list of questions', oracle_questions_path %></p>
+  
