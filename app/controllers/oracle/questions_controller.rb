@@ -10,4 +10,8 @@ class Oracle::QuestionsController < ApplicationController
       redirect_to oracle_question_answers_path(question)
     end
   end
+  
+  def index
+    @questions = ::Oracle::Question.opened
+  end
 end
