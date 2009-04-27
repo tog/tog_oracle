@@ -2,3 +2,4 @@
 <% content_tag :ul do -%>
   <%= render :partial => "question", :collection => @questions %>
 <% end %>
+<%= link_to 'Pose a question', new_member_oracle_question_path %>
