@@ -50,7 +50,7 @@ class Oracle::Question < ActiveRecord::Base
   end
   
   def closeable?
-    after_initial_answer_period?
+    after_initial_answer_period? && opened?
   end
   
   def overdue?
@@ -71,6 +71,6 @@ class Oracle::Question < ActiveRecord::Base
     
   private
   def close_if_has_suitable_answer
-    self.close! unless suitable_answer.nil? || self.closed?
+    self.close! if self.closeable? && !suitable_answer.nil?
   end
 end

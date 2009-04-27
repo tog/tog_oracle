@@ -2,7 +2,7 @@
 <%= question_status_tag(@question) %>
 <%#= question_and_list_of_answers(@question, @answers) %>
 <!-- TODO: this would be nicer if the logic was moved to helper methods -->
-<% if current_user == @question.user && @question.opened? %>
+<% if current_user == @question.user && @question.closeable? %>
   <% form_for @question do |f| -%>
     <ul>
       <%= render :partial => "answer_for_publisher", :collection => @answers, :as => :answer %>
