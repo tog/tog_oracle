@@ -1,5 +1,5 @@
-<h2>Your questions</h2>
+<h2><%= I18n.t("member.oracle.questions.index.your_questions") %></h2>
 <% content_tag :ul do -%>
   <%= render :partial => "question", :collection => @questions %>
 <% end %>
-<%= link_to 'Pose another question', new_member_oracle_question_path %>
+<%= link_to I18n.t("member.oracle.questions.index.pose_another_question"), new_member_oracle_question_path %>

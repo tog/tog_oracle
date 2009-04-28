@@ -1,4 +1,4 @@
-<h2>Answers for <%= @question.body %></h2>
+<h2><%= I18n.t("oracle.answers.index.answers_for") %> <%= @question.body %></h2>
 <%= question_status_tag(@question) %>
 <%#= question_and_list_of_answers(@question, @answers) %>
 <!-- TODO: this would be nicer if the logic was moved to helper methods -->
@@ -7,13 +7,13 @@
     <ul>
       <%= render :partial => "answer_for_publisher", :collection => @answers, :as => :answer %>
     </ul>
-    <%= f.submit "Submit" if @answers.length > 0 %>
+    <%= f.submit I18n.t("oracle.answers.index.submit") if @answers.length > 0 %>
   <% end -%>
 <% else %>
   <%= render :partial => "answer", :collection => @answers %>
 <% end %>
 
 <p><%= answer_this_question_link(@question) %></p>
-<p><%= link_to 'Back to my questions', member_oracle_questions_path %></p>
-<p><%= link_to 'Back to list of questions', oracle_questions_path %></p>
+<p><%= link_to I18n.t("oracle.answers.index.back_to_my_questions"), member_oracle_questions_path %></p>
+<p><%= link_to I18n.t("oracle.answers.index.back_to_list_of_questions"), oracle_questions_path %></p>
   

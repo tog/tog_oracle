@@ -1,5 +1,5 @@
-<h2>Open questions</h2>
+<h2><%= I18n.t("oracle.questions.index.open_questions") %></h2>
 <% content_tag :ul do -%>
   <%= render :partial => "question", :collection => @questions %>
 <% end %>
-<%= link_to 'Pose a question', new_member_oracle_question_path %>
+<%= link_to I18n.t("oracle.questions.index.pose_a_question"), new_member_oracle_question_path %>

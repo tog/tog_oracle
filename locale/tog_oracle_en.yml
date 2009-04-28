@@ -1,0 +1,30 @@
+en:
+  oracle:
+    questions:
+      question_open: Question open
+      question_closed: Question closed
+      index:
+        open_questions: Open questions
+        pose_a_question: Pose a question
+    answers:
+      answer_this_question: Answer this question
+      index:
+        answers_for: Answers for
+        back_to_my_questions: Back to my questions
+        back_to_list_of_questions: Back to list of questions
+        submit: Submit
+  member:
+    oracle:
+      questions:
+        new:
+          new_question: New question
+          question: Question
+          submit_question: Submit question
+        index:
+          your_questions: Your questions
+          pose_another_question: Pose another question
+      answers:
+        new:
+          answer: Answer
+          submit: Submit
+          see_answers_given_to_this_question: See answers given to this question

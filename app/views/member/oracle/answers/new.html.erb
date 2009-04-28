@@ -1,9 +1,9 @@
 <h2><%= @question.body %></h2>
 
 <% form_for :answer, @answer, :url => member_oracle_question_answers_path do |f| -%>
-  <%= f.label :body, "Answer" %>
+  <%= f.label :body, I18n.t("member.oracle.answers.new.answer") %>
   <%= f.text_field :body %>
   
-  <%= f.submit "Submit" %>
+  <%= f.submit I18n.t("member.oracle.answers.new.submit") %>
 <% end -%>
-<%= link_to 'See answers given to this question', oracle_question_answers_path(@question) %>
+<%= link_to I18n.t("member.oracle.answers.new.see_answers_given_to_this_question"), oracle_question_answers_path(@question) %>

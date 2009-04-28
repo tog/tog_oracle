@@ -1,0 +1,30 @@
+es:
+  oracle:
+    questions:
+      question_open: Pregunta abierta
+      question_closed: Pregunta cerrada
+      index:
+        open_questions: Preguntas abiertas
+        pose_a_question: Poner una pregunta
+    answers:
+      answer_this_question: Responder esta pregunta
+      index:
+        answers_for: Respuestas para
+        back_to_my_questions: Ir a mis preguntas
+        back_to_list_of_questions: Ir al listado de preguntas
+        submit: Subir
+  member:
+    oracle:
+      questions:
+        new:
+          new_question: Nueva pregunta
+          question: Pregunta
+          submit_question: Subir pregunta
+        index:
+          your_questions: Tus preguntas
+          pose_another_question: Poner otra pregunta
+      answers:
+        new:
+          answer: Respuesta
+          submit: Subir
+          see_answers_given_to_this_question: Ver respuestas a esta pregunta
