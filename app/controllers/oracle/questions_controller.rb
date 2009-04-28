@@ -3,10 +3,10 @@ class Oracle::QuestionsController < ApplicationController
   def update
     question = ::Oracle::Question.find(params[:id])
     if question.update_attributes(params[:question])
-      flash[:ok] = "Question updated"
+      flash[:ok] = I18n.t("oracle.questions.update.saved_ok")
       redirect_to oracle_question_answers_path(question)
     else
-      flash[:error] = "Error during question update"
+      flash[:error] = I18n.t("oracle.questions.update.saved_error")
       redirect_to oracle_question_answers_path(question)
     end
   end

@@ -11,10 +11,10 @@ class Member::Oracle::AnswersController < Member::BaseController
     answer_params = params[:answer].merge(:question => @question)
     @answer = ::Oracle::Answer.new(answer_params)
     if @answer.save
-      flash[:ok] = "Answer posted."
+      flash[:ok] = I18n.t("member.oracle.answers.create.saved_ok")
       redirect_to oracle_question_answers_path(@question)
     else
-      flash[:error] = "Error during answer creation."
+      flash[:error] = I18n.t("member.oracle.answers.create.saved_error")
       render :action => :new
     end
   end
@@ -25,7 +25,7 @@ class Member::Oracle::AnswersController < Member::BaseController
   end
   def check_if_question_closed
     if @question.closed?
-      flash[:error] = "You cannot answer a question that is already closed."
+      flash[:error] = I18n.t("member.oracle.answers.cannot_answer_already_closed")
       redirect_to oracle_question_answers_path(@question)
     end
   end

@@ -10,10 +10,10 @@ class Member::Oracle::QuestionsController < Member::BaseController
     params[:question].merge!(:user => current_user)
     question = ::Oracle::Question.new(params[:question])
     if question.save
-      flash[:ok] = "Question created"
+      flash[:ok] = I18n.t("member.oracle.questions.create.saved_ok")
       redirect_to member_oracle_questions_path
     else
-      flash[:error] = "Error during question creation"
+      flash[:error] = I18n.t("member.oracle.questions.create.saved_error")
       render :action => :new
     end
   end
@@ -32,7 +32,7 @@ class Member::Oracle::QuestionsController < Member::BaseController
 
   def check_if_closeable
     unless @question.closeable?
-      flash[:error] = "Question is not closeable"
+      flash[:error] = I18n.t("member.oracle.questions.question_not_closeable")
       redirect_to member_oracle_questions_path
     end
   end

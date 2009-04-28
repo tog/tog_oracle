@@ -16,15 +16,23 @@ es:
   member:
     oracle:
       questions:
+        question_not_closeable: La pregunta no se puede cerrar.
         new:
           new_question: Nueva pregunta
           question: Pregunta
           submit_question: Subir pregunta
+        create:
+          saved_ok: Pregunta subida.
+          saved_error: Error al subir la pregunta.
         index:
           your_questions: Tus preguntas
           pose_another_question: Poner otra pregunta
       answers:
+        cannot_answer_already_closed: No se puede responder una pregunta cerrada.
         new:
           answer: Respuesta
           submit: Subir
           see_answers_given_to_this_question: Ver respuestas a esta pregunta
+        create:
+          saved_ok: Respuesta subida.
+          saved_error: Error al subir la respuesta.

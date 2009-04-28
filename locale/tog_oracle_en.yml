@@ -6,6 +6,9 @@ en:
       index:
         open_questions: Open questions
         pose_a_question: Pose a question
+      update:
+        saved_ok: Question updated.
+        saved_error: Error during question update.
     answers:
       answer_this_question: Answer this question
       index:
@@ -16,15 +19,23 @@ en:
   member:
     oracle:
       questions:
+        question_not_closeable: Question is not closeable
         new:
           new_question: New question
           question: Question
           submit_question: Submit question
+        create:
+          saved_ok: Question created.
+          saved_error: Error during question creation.
         index:
           your_questions: Your questions
           pose_another_question: Pose another question
       answers:
+        cannot_answer_already_closed: You cannot answer a question that is already closed.
         new:
           answer: Answer
           submit: Submit
           see_answers_given_to_this_question: See answers given to this question
+        create:
+          saved_ok: Answer posted.
+          saved_error: Error during answer creation.
