@@ -1,1 +1,3 @@
-<li class="suitable_answer"><%= answer.body %> <%= content_tag(:span, "SUITABLE") if answer.suitable? %></li>
+<% content_tag(:li, :class => ("suitable_answer" if answer.suitable?)) do -%>
+  <%= answer_and_rating_stars(answer) %>
+<% end -%>
