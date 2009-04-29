@@ -22,7 +22,7 @@ class Member::Oracle::QuestionsControllerTest < ActionController::TestCase
       setup do
         post :create, :question => { :body => "Where is the fountain of eternal youth?" }
       end
-      should_set_the_flash_to "Question created"
+      should_set_the_flash_to "Question created."
       should_redirect_to("the list of the user's questions") { member_oracle_questions_path }
     end
 
@@ -30,7 +30,7 @@ class Member::Oracle::QuestionsControllerTest < ActionController::TestCase
       setup do
         post :create, :question => { :body => "" }
       end
-      should_set_the_flash_to "Error during question creation"
+      should_set_the_flash_to "Error during question creation."
       should_render_template :new
     end
     
