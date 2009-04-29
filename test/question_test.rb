@@ -40,36 +40,6 @@ class QuestionTest < ActiveSupport::TestCase
     setup do
       @question = ::Oracle::Question.create(:body => "Life, universe?")
     end
-    context "'s suitable_answer_id" do
-      setup do
-        @answer = ::Oracle::Answer.create(:body => "42")
-        @question.answers << @answer
-      end
-      should "be gettable" do
-        @question.suitable_answer = @answer
-        @question.save
-        assert_equal(@answer.id, @question.suitable_answer_id)
-      end
-      should "be settable" do
-        @question.suitable_answer_id = @answer.id
-        @question.save
-        assert_equal(@answer, @question.suitable_answer)
-      end
-    end
-
-    context "when assigned a suitable answer" do
-      setup do
-        answer = ::Oracle::Answer.create(:body => "42")        
-        @question.answers << answer
-        @question.stubs(:closeable?).returns(true)
-        @question.suitable_answer = answer
-        @question.save
-      end
-      should "become closed" do
-        @question.reload
-        assert_equal(true, @question.closed?)
-      end
-    end
 
     context "in the initial answer period" do
       setup do
