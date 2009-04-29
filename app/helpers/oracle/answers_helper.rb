@@ -25,9 +25,13 @@ module AnswersHelper
   def answer_and_rating_stars(answer)
     out = []
     out << answer.body
-    out << rating_stars(answer,'ico/star_on.gif','ico/star.gif')
+    out << get_rating_stars(answer)
     out << content_tag(:span, "SUITABLE") if answer.suitable?
     out.join(" ")
+  end
+  
+  def get_rating_stars(answer)
+    rating_stars(answer,'ico/star_on.gif','ico/star.gif')
   end
   
   # TODO: this should go to tog_core into the RatesHelper module

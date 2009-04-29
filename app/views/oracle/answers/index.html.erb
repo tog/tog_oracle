@@ -9,6 +9,8 @@
     </ul>
     <%= f.submit I18n.t("oracle.answers.index.submit") if @answers.length > 0 %>
   <% end -%>
+<% elsif @question.opened? %>
+  <%= render :partial => "answer_with_voting", :collection => @answers, :as => :answer %>
 <% else %>
   <%= render :partial => "answer", :collection => @answers %>
 <% end %>

@@ -1,4 +1,5 @@
 <li>
   <%= radio_button("question", "suitable_answer_id", answer.id) %>
   <%= label("question", "suitable_answer_id_#{answer.id}", answer.body) %>
+  <%= get_rating_stars(answer) %>
 </li>
