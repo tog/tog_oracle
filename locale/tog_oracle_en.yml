@@ -9,6 +9,10 @@ en:
       update:
         saved_ok: Question updated.
         saved_error: Error during question update.
+      close_request_mail:
+        beginning_greeting: Hi {{name}}
+        body: The question "{{question}}" has been open for 7 days. Please, pick a suitable answer by following the below link
+        ending_greeting: Best regards
     answers:
       answer_this_question: Answer this question
       index:

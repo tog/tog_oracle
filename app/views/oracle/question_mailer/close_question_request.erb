@@ -1,8 +1,8 @@
-Hi <%= @asker_name %>
+<%= I18n.t("oracle.questions.close_request_mail.beginning_greeting", :name => @asker_name ) %>,
 
-The question "<%= @question %>" has been open for 7 days. Please, pick a suitable answer by following the below link:
+<%= I18n.t("oracle.questions.close_request_mail.body", :question => @question ) %>:
 
 <%= @answer_link %>
 
-Best regards,
+<%= I18n.t("oracle.questions.close_request_mail.ending_greeting") %>,
 <%= @sender_name %>

@@ -6,6 +6,13 @@ es:
       index:
         open_questions: Preguntas abiertas
         pose_a_question: Poner una pregunta
+      update:
+        saved_ok: Pregunta actualizada.
+        saved_error: Error al actualizar la pregunta.
+      close_request_mail:
+        beginning_greeting: Hola {{name}}
+        body: La pregunta "{{question}}" sigue abierta por 7 días. Por favor, elija una pregunta idónea siguiendo el enlace debajo
+        ending_greeting: Best regards
     answers:
       answer_this_question: Responder esta pregunta
       index:
