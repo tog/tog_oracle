@@ -1,3 +1,6 @@
+* AnswersController.update - can we use fields_for on the index form?
+* add title to questions
+* let the question be editable (edit page for question)
 * include the tog_oracle stylesheet on tog_oracle pages
 * check delayed_job for setting up a runner every day
 * check that only the question's publisher can pick the suitable answer, close the question, etc.

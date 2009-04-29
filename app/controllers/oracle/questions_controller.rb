@@ -4,7 +4,10 @@ class Oracle::QuestionsController < ApplicationController
   before_filter :find_question, :only => [:update]
 
   def update
-    # question = ::Oracle::Question.find(params[:id])
+    unless params[:answer].nil?
+      answer = ::Oracle::Answer.find(params[:answer][:suitable])
+      answer.make_suitable!
+    end
     if @question.update_attributes(params[:question])
       flash[:ok] = I18n.t("oracle.questions.update.saved_ok")
       redirect_to oracle_question_answers_path(@question)

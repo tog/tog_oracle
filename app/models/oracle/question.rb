@@ -5,7 +5,7 @@ class Oracle::Question < ActiveRecord::Base
   has_one :suitable_answer, :class_name => "Oracle::Answer", :conditions => { :suitable => true }
 
   validates_presence_of :body
-  before_save :close_if_has_suitable_answer
+  after_save :close_if_has_suitable_answer
   named_scope :opened, :conditions => { :opened => true }
   
   class << self
@@ -67,6 +67,7 @@ class Oracle::Question < ActiveRecord::Base
   
   def close!
     self.opened = false
+    save!
   end
     
   private

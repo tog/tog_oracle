@@ -43,6 +43,7 @@ class QuestionTest < ActiveSupport::TestCase
     context "'s suitable_answer_id" do
       setup do
         @answer = ::Oracle::Answer.create(:body => "42")
+        @question.answers << @answer
       end
       should "be gettable" do
         @question.suitable_answer = @answer
@@ -58,7 +59,9 @@ class QuestionTest < ActiveSupport::TestCase
 
     context "when assigned a suitable answer" do
       setup do
-        answer = ::Oracle::Answer.create(:body => "42")
+        answer = ::Oracle::Answer.create(:body => "42")        
+        @question.answers << answer
+        @question.stubs(:closeable?).returns(true)
         @question.suitable_answer = answer
         @question.save
       end
@@ -82,11 +85,11 @@ class QuestionTest < ActiveSupport::TestCase
         @question.stubs(:after_initial_answer_period?).returns(true)
       end
       should "be closeable if not already closed" do
-        @question.stubs(:closed?).returns(false)
+        @question.stubs(:opened?).returns(true)
         assert_equal(true, @question.closeable?)
       end
       should "not be closeable if already closed" do
-        @question.stubs(:closed?).returns(true)
+        @question.stubs(:opened?).returns(false)
         assert_equal(false, @question.closeable?)
       end
     end
