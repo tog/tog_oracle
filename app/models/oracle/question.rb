@@ -72,7 +72,6 @@ class Oracle::Question < ActiveRecord::Base
   private
   def close_if_has_suitable_answer
     return if self.new_record?
-    debugger
     if self.closeable? && !suitable_answer.nil?
       self.close!
     end
