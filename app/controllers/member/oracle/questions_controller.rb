@@ -26,7 +26,6 @@ class Member::Oracle::QuestionsController < Member::BaseController
   end
   
   def update
-    debugger
     if @question.update_attributes(params[:question])
       flash[:ok] = I18n.t("member.oracle.questions.update.saved_ok")
       redirect_to oracle_question_answers_path(@question)

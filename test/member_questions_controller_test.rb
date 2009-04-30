@@ -44,6 +44,7 @@ class Member::Oracle::QuestionsControllerTest < ActionController::TestCase
     
     context "editing" do
       setup do
+        @question = Factory(:question)
         get :edit, :id => @question
       end
       should_respond_with :success
@@ -51,6 +52,7 @@ class Member::Oracle::QuestionsControllerTest < ActionController::TestCase
     
     context "updating" do
       setup do
+        @question = Factory(:question)
         put :update, :id => @question, :question => Factory.attributes_for(:question)
       end
       should_redirect_to("the list of answers to that question") { oracle_question_answers_path(@question) }
