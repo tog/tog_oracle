@@ -1,4 +1,3 @@
-* AnswersController.update - can we use fields_for on the index form?
 * add title to questions
 * let the question be editable (edit page for question)
 * include the tog_oracle stylesheet on tog_oracle pages
@@ -9,6 +8,7 @@
 
 DONE
 ====
+* AnswersController.update - can we use fields_for on the index form? X
 * add some common sense links to pages
 * i18n the close_question_request mail
 * i18n

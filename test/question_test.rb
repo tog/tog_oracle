@@ -3,9 +3,9 @@ require File.join(File.dirname(__FILE__), 'test_helper')
 class QuestionTest < ActiveSupport::TestCase
   context "The Question class" do
     setup do
-      @q1 = ::Oracle::Question.create(:body => "Why?")
-      @q2 = ::Oracle::Question.create(:body => "What?")
-      @q3 = ::Oracle::Question.create(:body => "When?")
+      @q1 = Factory(:question, :title => "Why?")
+      @q2 = Factory(:question, :title => "What?")
+      @q3 = Factory(:question, :title => "When?")
       @q1.stubs(:overdue?).returns(true)
       @q2.stubs(:overdue?).returns(false)
       @q3.stubs(:overdue?).returns(true)
@@ -38,7 +38,8 @@ class QuestionTest < ActiveSupport::TestCase
 
   context "A question" do
     setup do
-      @question = ::Oracle::Question.create(:body => "Life, universe?")
+      # @question = ::Oracle::Question.create(:body => "Life, universe?")
+      @question = Factory(:question)
     end
 
     context "in the initial answer period" do
