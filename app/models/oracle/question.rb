@@ -4,7 +4,7 @@ class Oracle::Question < ActiveRecord::Base
   has_many :answers, :class_name => "Oracle::Answer"
   has_one :suitable_answer, :class_name => "Oracle::Answer", :conditions => { :suitable => true }
 
-  validates_presence_of :body
+  validates_presence_of :body, :title
   after_save :close_if_has_suitable_answer
   named_scope :opened, :conditions => { :opened => true }
 
