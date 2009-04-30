@@ -10,7 +10,7 @@ class Member::Oracle::AnswersControllerTest < ActionController::TestCase
       @user = create_user_without_validation
       @controller.stubs(:current_user).returns(@user)
       
-      @question = ::Oracle::Question.create(:body => "What is the meaning of life?") 
+      @question = Factory(:question)
     end
     
     context "new" do

@@ -1,6 +1,6 @@
 class AddTitleToQuestions < ActiveRecord::Migration
   def self.up
-    add_column :questions, :title, :string, :null => false
+    add_column :questions, :title, :string
   end
 
   def self.down

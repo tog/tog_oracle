@@ -7,7 +7,7 @@ class Oracle::AnswersControllerTest < ActionController::TestCase
       @request    = ActionController::TestRequest.new
       @response   = ActionController::TestResponse.new
       
-      @question = Oracle::Question.create(:body => "what is the meaning of life?")
+      @question = Factory(:question)
     end
 
     context "list for a given question" do

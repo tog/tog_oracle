@@ -20,7 +20,7 @@ class Member::Oracle::QuestionsControllerTest < ActionController::TestCase
     
     context "creation" do
       setup do
-        post :create, :question => { :body => "Where is the fountain of eternal youth?" }
+        post :create, :question => Factory.attributes_for(:question)
       end
       should_set_the_flash_to "Question created."
       should_redirect_to("the list of the user's questions") { member_oracle_questions_path }
