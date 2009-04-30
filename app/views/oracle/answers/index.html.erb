@@ -1,4 +1,4 @@
-<h2><%= I18n.t("oracle.answers.index.answers_for") %> <%= @question.body %></h2>
+<h2><%= I18n.t("oracle.answers.index.answers_for", :question => @question.title) %></h2>
 <%= question_status_tag(@question) %>
 <%#= question_and_list_of_answers(@question, @answers) %>
 <!-- TODO: this would be nicer if the logic was moved to helper methods -->

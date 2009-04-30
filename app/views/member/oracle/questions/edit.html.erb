@@ -1,8 +1,12 @@
-<h2><%= @question.body %></h2>
-<% form_for @question do |f| -%>
+<h2><%= I18n.t("member.oracle.questions.edit.page_header", :title => @question.title) %></h2>
+<% form_for :question, @question, :url => member_oracle_question_path(@question), :html => { :method => :put } do |f| -%>
   <p>
-    <%= f.label :body, "Body" %>
+    <%= f.label :title, I18n.t("member.oracle.questions.edit.title") %>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :body, I18n.t("member.oracle.questions.edit.body") %>
     <%= f.text_field :body %>
   </p>
-  <%= f.submit "Save" %>
+  <%= f.submit I18n.t("member.oracle.questions.edit.save") %>
 <% end -%>

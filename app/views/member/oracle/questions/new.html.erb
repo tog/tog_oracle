@@ -1,7 +1,13 @@
 <h2><%= I18n.t("member.oracle.questions.new.new_question") %></h2>
 
 <% form_for :question, @question, :url => member_oracle_questions_path do |f| -%>
-  <%= f.label :body, I18n.t("member.oracle.questions.new.question") %>
-  <%= f.text_field :body %>
+  <p>
+    <%= f.label :title, I18n.t("member.oracle.questions.new.title") %>
+    <%= f.text_field :title %>    
+  </p>
+  <p>
+    <%= f.label :body, I18n.t("member.oracle.questions.new.body") %>
+    <%= f.text_field :body %>        
+  </p>
   <%= f.submit I18n.t("member.oracle.questions.new.submit_question") %>
 <% end -%>

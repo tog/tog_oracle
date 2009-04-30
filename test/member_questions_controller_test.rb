@@ -28,7 +28,7 @@ class Member::Oracle::QuestionsControllerTest < ActionController::TestCase
 
     context "failing creation" do
       setup do
-        post :create, :question => { :body => "" }
+        post :create, :question => { :title => "" }
       end
       should_set_the_flash_to "Error during question creation."
       should_render_template :new
@@ -42,5 +42,19 @@ class Member::Oracle::QuestionsControllerTest < ActionController::TestCase
       # should_assign_to(:questions) { "current_user.questions" }
     end
     
+    context "editing" do
+      setup do
+        get :edit, :id => @question
+      end
+      should_respond_with :success
+    end
+    
+    context "updating" do
+      setup do
+        put :update, :id => @question, :question => Factory.attributes_for(:question)
+      end
+      should_redirect_to("the list of answers to that question") { oracle_question_answers_path(@question) }
+      should_set_the_flash_to "Question updated."
+    end
   end
 end

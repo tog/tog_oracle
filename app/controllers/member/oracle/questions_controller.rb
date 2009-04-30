@@ -1,6 +1,6 @@
 class Member::Oracle::QuestionsController < Member::BaseController
 
-  before_filter :find_question, :only => [:edit]
+  before_filter :find_question, :only => [:edit, :update]
 
   def new
     @question = ::Oracle::Question.new
@@ -23,6 +23,17 @@ class Member::Oracle::QuestionsController < Member::BaseController
   end
 
   def edit
+  end
+  
+  def update
+    debugger
+    if @question.update_attributes(params[:question])
+      flash[:ok] = I18n.t("member.oracle.questions.update.saved_ok")
+      redirect_to oracle_question_answers_path(@question)
+    else
+      flash[:error] = I18n.t("member.oracle.questions.update.saved_error")
+      redirect_to edit_member_oracle_question_path(@question)
+    end
   end
 
   protected

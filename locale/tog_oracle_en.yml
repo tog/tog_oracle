@@ -16,7 +16,7 @@ en:
     answers:
       answer_this_question: Answer this question
       index:
-        answers_for: Answers for
+        answers_for: Answers for "{{question}}"
         back_to_my_questions: Back to my questions
         back_to_list_of_questions: Back to list of questions
         submit: Submit
@@ -26,7 +26,8 @@ en:
         question_not_closeable: Question is not closeable
         new:
           new_question: New question
-          question: Question
+          title: Title
+          body: Body
           submit_question: Submit question
         create:
           saved_ok: Question created.
@@ -34,6 +35,14 @@ en:
         index:
           your_questions: Your questions
           pose_another_question: Pose another question
+        edit:
+          page_header: Edit "{{title}}"
+          title: Title
+          body: Body
+          save: Save
+        update:
+          saved_ok: Question updated.
+          saved_error: Error during question update.          
       answers:
         cannot_answer_already_closed: You cannot answer a question that is already closed.
         new:
