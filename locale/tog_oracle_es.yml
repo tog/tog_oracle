@@ -27,6 +27,7 @@ es:
     oracle:
       questions:
         question_not_closeable: La pregunta no se puede cerrar.
+        cannot_modify_closed_question: Una pregunta cerrada no puede ser modificado.
         new:
           new_question: Nueva pregunta
           title: Titulo

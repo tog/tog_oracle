@@ -47,6 +47,16 @@ class Member::Oracle::QuestionsControllerTest < ActionController::TestCase
         @question = Factory(:question, :user => @user)
       end
 
+      context "of a closed question" do
+        setup do
+          @controller.stubs(:current_user).returns(@question.user)
+          ::Oracle::Question.any_instance.stubs(:closed?).returns(true)
+          get :edit, :id => @question
+        end
+        should_redirect_to("the list of answers to that question") { oracle_question_answers_path(@question) }
+        should_set_the_flash_to "A closed question can not be modified."
+      end
+      
       context "for the question's publisher" do
         setup do
           @controller.stubs(:current_user).returns(@question.user)
@@ -69,6 +79,16 @@ class Member::Oracle::QuestionsControllerTest < ActionController::TestCase
     context "update" do
       setup do
         @question = Factory(:question, :user => @user)
+      end
+
+      context "of a closed question" do
+        setup do
+          ::Oracle::Question.any_instance.stubs(:closed?).returns(true)
+          @question.stubs(:closed?).returns(true)
+          put :update, :id => @question, :params => { :question => Factory.attributes_for(:question) }
+        end
+        should_redirect_to("the list of answers to that question") { oracle_question_answers_path(@question) }
+        should_set_the_flash_to "A closed question can not be modified."
       end
 
       context "for the question's publisher" do

@@ -1,6 +1,7 @@
 class Member::Oracle::QuestionsController < Member::BaseController
 
   before_filter :find_question, :only => [:edit, :update]
+  before_filter :check_if_closed, :only => [:edit, :update]
   only_owner
 
   def new
@@ -45,6 +46,13 @@ class Member::Oracle::QuestionsController < Member::BaseController
     unless @question.closeable?
       flash[:error] = I18n.t("member.oracle.questions.question_not_closeable")
       redirect_to member_oracle_questions_path
+    end
+  end
+  
+  def check_if_closed
+    if @question.closed?
+      flash[:error] = I18n.t("member.oracle.questions.cannot_modify_closed_question")
+      redirect_to oracle_question_answers_path(@question)
     end
   end
 end
