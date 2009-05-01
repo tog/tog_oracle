@@ -6,7 +6,7 @@
   </p>
   <p>
     <%= f.label :body, I18n.t("member.oracle.questions.edit.body") %>
-    <%= f.text_field :body %>
+    <%= f.text_area :body, :cols => 40, :rows => 5 %>
   </p>
   <%= f.submit I18n.t("member.oracle.questions.edit.save") %>
 <% end -%>

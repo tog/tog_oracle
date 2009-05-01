@@ -3,11 +3,11 @@
 <% form_for :question, @question, :url => member_oracle_questions_path do |f| -%>
   <p>
     <%= f.label :title, I18n.t("member.oracle.questions.new.title") %>
-    <%= f.text_field :title %>    
+    <%= f.text_field :title %>
   </p>
   <p>
     <%= f.label :body, I18n.t("member.oracle.questions.new.body") %>
-    <%= f.text_field :body %>        
+    <%= f.text_area :body, :cols => 40, :rows => 5 %>
   </p>
   <%= f.submit I18n.t("member.oracle.questions.new.submit_question") %>
 <% end -%>
