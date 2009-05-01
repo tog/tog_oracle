@@ -1,4 +1,6 @@
-* question and answers should not be modified once the question is closed
+* possibility of reporting abuse for questions
+* possibility of tagging questions
+* test delivery of overdue notification messages
 * include the tog_oracle stylesheet on tog_oracle pages
 * check delayed_job for setting up a runner every day
 * try to put the rendering of the page/action in oracle/questions/:id/answers into helpers
@@ -9,7 +11,7 @@
 
 DONE
 ====
-
+* question and answers should not be modified once the question is closed
 * check that only the question's publisher can pick the suitable answer, edit the question, etc.
 * add title to questions
 * let the question be editable (edit page for question)
