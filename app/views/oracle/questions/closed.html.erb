@@ -1,0 +1,5 @@
+<h2><%= I18n.t("oracle.questions.closed.closed_questions") %></h2>
+<% content_tag :ul do -%>
+  <%= render :partial => "question", :collection => @questions %>
+<% end %>
+<%= link_to I18n.t("oracle.questions.closed.open_questions_link"), oracle_questions_path %>

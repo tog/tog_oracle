@@ -6,6 +6,9 @@ en:
       index:
         open_questions: Open questions
         pose_a_question: Pose a question
+      closed:
+        closed_questions: Closed questions
+        open_questions_link: See open questions
       update:
         saved_ok: Question updated.
         saved_error: Error during question update.

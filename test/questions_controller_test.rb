@@ -29,6 +29,13 @@ class Oracle::QuestionsControllerTest < ActionController::TestCase
         should_redirect_to("the login page") { login_path }
       end
     end
+    
+    context "list of closed questions" do
+      setup do
+        get :closed
+      end
+      should_respond_with :success
+    end
   end
   
 end

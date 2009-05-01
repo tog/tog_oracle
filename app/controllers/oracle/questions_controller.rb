@@ -21,6 +21,10 @@ class Oracle::QuestionsController < ApplicationController
     @questions = ::Oracle::Question.opened
   end
 
+  def closed
+    @questions = ::Oracle::Question.closed
+  end
+
   private
   def find_question
     @question = ::Oracle::Question.find(params[:id])

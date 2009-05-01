@@ -6,6 +6,9 @@ es:
       index:
         open_questions: Preguntas abiertas
         pose_a_question: Poner una pregunta
+      closed:
+        closed_questions: Preguntas cerradas
+        open_questions_link: Ver preguntas abiertas
       update:
         saved_ok: La pregunta ha sido actualizada.
         saved_error: Error al actualizar la pregunta.
