@@ -1,6 +1,7 @@
 class Member::Oracle::QuestionsController < Member::BaseController
 
   before_filter :find_question, :only => [:edit, :update]
+  only_owner
 
   def new
     @question = ::Oracle::Question.new
