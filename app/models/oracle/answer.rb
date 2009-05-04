@@ -6,6 +6,7 @@ class Oracle::Answer < ActiveRecord::Base
   validates_presence_of :body
 
   acts_as_rateable :average => true
+  acts_as_abusable
 
   def make_suitable!
     self.suitable = true
