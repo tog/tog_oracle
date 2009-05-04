@@ -8,7 +8,9 @@ class Oracle::Question < ActiveRecord::Base
   after_save :close_if_has_suitable_answer
   named_scope :opened, :conditions => { :opened => true }
   named_scope :closed, :conditions => { :opened => false }
-  
+
+  acts_as_taggable
+
   class << self
     def close_overdues_and_send_notifications
       close_overdues

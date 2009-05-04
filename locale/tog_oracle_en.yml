@@ -1,5 +1,7 @@
 en:
   oracle:
+    common:
+      separated_by_commas: Separated by commas
     questions:
       question_open: Question open
       question_closed: Question closed
@@ -32,6 +34,7 @@ en:
           new_question: New question
           title: Title
           body: Body
+          tags: Tags
           submit_question: Submit question
         create:
           saved_ok: Question created.
@@ -43,6 +46,7 @@ en:
           page_header: Edit "{{title}}"
           title: Title
           body: Body
+          tags: Tags
           save: Save
         update:
           saved_ok: Question updated.

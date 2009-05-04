@@ -8,5 +8,10 @@
     <%= f.label :body, I18n.t("member.oracle.questions.edit.body") %>
     <%= f.text_area :body, :cols => 40, :rows => 5 %>
   </p>
+  <p>
+    <%= f.label :tag_list, I18n.t("member.oracle.questions.edit.tags") %>
+    <%= f.text_field :tag_list %><br />
+    <span class="helpinfo">(<%= I18n.t("oracle.common.separated_by_commas") %>)</span>
+  </p>    
   <%= f.submit I18n.t("member.oracle.questions.edit.save") %>
 <% end -%>
