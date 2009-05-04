@@ -2,4 +2,5 @@
   <%= radio_button("answer", "suitable", answer.id) %>
   <%= label("answer", "suitable_#{answer.id}", answer.body) %>
   <%= get_rating_stars(answer) %>
+  <%= report_abuse_link(answer) %>
 </li>
