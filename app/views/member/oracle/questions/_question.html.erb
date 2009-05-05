@@ -1,3 +1,5 @@
 <li>
-  <%= link_to question.title, oracle_question_answers_path(question) %>
+  <%= question.title %>
+  <%= link_to I18n.t("member.oracle.questions.index.edit"), edit_member_oracle_question_path(question) %>
+  <%= link_to I18n.t("member.oracle.questions.index.pick_suitable"), oracle_question_answers_path(question) %>
 </li>

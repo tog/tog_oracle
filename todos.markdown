@@ -1,15 +1,15 @@
-* possibility of reporting abuse for questions
-* possibility of tagging questions
 * include the tog_oracle stylesheet on tog_oracle pages
 * check delayed_job for setting up a runner every day
 * try to put the rendering of the page/action in oracle/questions/:id/answers into helpers
 * when no answers/questions exist, put an explanation there, not just a blank list
-* make a pick suitable answer + edit links on the member_oracle_questions page (Your questions)
 * display the author and the date the question was posed on question lists and the "answers to a question" page
 
 
 DONE
 ====
+* make a pick suitable answer + edit links on the member_oracle_questions page (Your questions)
+* possibility of reporting abuse for questions
+* possibility of tagging questions
 * test delivery of overdue notification messages
 * question and answers should not be modified once the question is closed
 * check that only the question's publisher can pick the suitable answer, edit the question, etc.

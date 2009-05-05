@@ -42,6 +42,8 @@ en:
         index:
           your_questions: Your questions
           pose_another_question: Pose another question
+          edit: Edit
+          pick_suitable: Pick suitable
         edit:
           page_header: Edit "{{title}}"
           title: Title
