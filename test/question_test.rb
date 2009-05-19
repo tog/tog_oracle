@@ -75,5 +75,10 @@ class QuestionTest < ActiveSupport::TestCase
       assert_equal(true, @question.overdue?)
     end
 
+    should "not be overdue if closed even if more than 7 days have passed since its creation" do
+      @question.stubs(:created_at).returns(10.days.ago)
+      @question.stubs(:opened).returns(false)
+      assert_equal(false, @question.overdue?)
+    end
   end
 end

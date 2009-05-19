@@ -37,7 +37,7 @@ class Oracle::Question < ActiveRecord::Base
   end
 
   def overdue?
-    self.created_at + 7.days < Time.now
+    opened? && self.created_at + 7.days < Time.now
   end
 
   def opened?
