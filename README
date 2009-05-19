@@ -1,21 +1,12 @@
 TogOracle
 =========
 
-Introduction goes here.
+tog_oracle is the Questions & Answers component of the tog platform. Registered users can ask questions and answer others' questions. The maker of the question can close the question by picking a suitable answer no earlier than 1 hour after the question had been posed.
 
-
-Example
-=======
-
-Example goes here.
+A question that is still open after the 7th day will be auto-closed by a cron-like task and the question's owner notified about this and asked to pick a suitable answer.
 
 Sending out "please close question" requests for overdue questions regularly
 ============================================================================
-
-Have this added to your crontab:
-
-0 12 * * * /usr/local/bin/ruby /application/script/runner -e production 'Oracle::Question.send_close_request_for_overdues'
-
-(for a more railsy solution, we should have a look at the delayed_job plugin)
+This is done with the rufus-scheduler gem, see the init.rb file.
 
 Copyright (c) 2009 [name of plugin creator], released under the MIT license
