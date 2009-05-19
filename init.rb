@@ -6,4 +6,13 @@ Dir[File.dirname(__FILE__) + '/locale/**/*.yml'].each do |file|
   I18n.load_path << file
 end
 
+require 'rubygems'
+require 'rufus/scheduler'
+
+scheduler = Rufus::Scheduler.start_new
+scheduler.every "1d" do
+  Oracle::Question.send_close_request_for_overdues
+end
+
+
 
