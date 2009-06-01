@@ -11,7 +11,7 @@ require 'rufus/scheduler'
 
 scheduler = Rufus::Scheduler.start_new
 scheduler.every "1d" do
-  Oracle::Question.send_close_request_for_overdues
+  Oracle::Question.send_close_requests_for_overdues
 end
 
 

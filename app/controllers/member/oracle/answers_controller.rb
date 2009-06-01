@@ -8,7 +8,7 @@ class Member::Oracle::AnswersController < Member::BaseController
   end
 
   def create
-    answer_params = params[:answer].merge(:question => @question)
+    answer_params = params[:answer].merge(:question => @question).merge(:user => current_user)
     @answer = ::Oracle::Answer.new(answer_params)
     if @answer.save
       flash[:ok] = I18n.t("member.oracle.answers.create.saved_ok")
