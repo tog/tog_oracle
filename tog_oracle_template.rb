@@ -1,5 +1,5 @@
 gem "rufus-scheduler"
-rake "gems:install"
+rake "gems:install", :sudo => true
 
 plugin 'only_owner', :git => "git://github.com/balinterdi/only_owner.git"
 
