@@ -1,4 +1,4 @@
-require "test_helper"
+require File.join(File.dirname(__FILE__), '..', '..', 'test_helper')
 
 class Oracle::QuestionsControllerTest < ActionController::TestCase
   context "A Question" do
@@ -6,14 +6,16 @@ class Oracle::QuestionsControllerTest < ActionController::TestCase
       @controller = Oracle::QuestionsController.new
       @request    = ActionController::TestRequest.new
       @response   = ActionController::TestResponse.new
-      
-      @question = Factory(:question)
+            
+      @user = Factory(:user, :login => 'chavez')
+      @controller.stubs(:current_user).returns(@user)
+      @question = Factory(:question, :user => @user)
+
     end
     
     context "update" do
       context "for the question's publisher" do
         setup do
-          @controller.stubs(:current_user).returns(@question.user)
           put :update, :id => @question, :params => { :question => Factory.attributes_for(:question) }
         end
         should_set_the_flash_to "Question updated."
@@ -22,7 +24,7 @@ class Oracle::QuestionsControllerTest < ActionController::TestCase
       
       context "for someone other than the question's publisher" do
         setup do
-          @controller.stubs(:current_user).returns(create_user_without_validation)
+          @controller.stubs(:current_user).returns(Factory(:user, :login => 'fidel'))          
           put :update, :id => @question, :params => { :question => Factory.attributes_for(:question) }
         end
         # should_set_the_flash_to "Error during question update."

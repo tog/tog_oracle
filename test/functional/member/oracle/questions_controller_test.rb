@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), 'test_helper')
+require File.join(File.dirname(__FILE__), '..', '..', '..', 'test_helper')
 
 class Member::Oracle::QuestionsControllerTest < ActionController::TestCase
   context "A Question" do
@@ -7,7 +7,7 @@ class Member::Oracle::QuestionsControllerTest < ActionController::TestCase
       @request    = ActionController::TestRequest.new
       @response   = ActionController::TestResponse.new
 
-      @user = create_user_without_validation
+      @user = Factory(:user, :login => 'chavez')
       @controller.stubs(:current_user).returns(@user)
     end
 
@@ -49,7 +49,6 @@ class Member::Oracle::QuestionsControllerTest < ActionController::TestCase
 
       context "of a closed question" do
         setup do
-          @controller.stubs(:current_user).returns(@question.user)
           ::Oracle::Question.any_instance.stubs(:closed?).returns(true)
           get :edit, :id => @question
         end
@@ -59,7 +58,6 @@ class Member::Oracle::QuestionsControllerTest < ActionController::TestCase
       
       context "for the question's publisher" do
         setup do
-          @controller.stubs(:current_user).returns(@question.user)
           get :edit, :id => @question
         end
         should_respond_with :success
@@ -68,7 +66,7 @@ class Member::Oracle::QuestionsControllerTest < ActionController::TestCase
 
       context "for someone other than the question's publisher" do
         setup do
-          @controller.stubs(:current_user).returns(create_user_without_validation)
+          @controller.stubs(:current_user).returns(Factory(:user, :login => 'fidel'))          
           get :edit, :id => @question
           # put :update, :id => @question, :params => { :question => Factory.attributes_for(:question) }
         end
@@ -93,7 +91,6 @@ class Member::Oracle::QuestionsControllerTest < ActionController::TestCase
 
       context "for the question's publisher" do
         setup do
-          @controller.stubs(:current_user).returns(@question.user)
           put :update, :id => @question, :params => { :question => Factory.attributes_for(:question) }
         end
         should_set_the_flash_to "Question updated."
@@ -102,7 +99,7 @@ class Member::Oracle::QuestionsControllerTest < ActionController::TestCase
 
       context "for someone other than the question's publisher" do
         setup do
-          @controller.stubs(:current_user).returns(create_user_without_validation)
+          @controller.stubs(:current_user).returns(Factory(:user, :login => 'fidel'))
           put :update, :id => @question, :params => { :question => Factory.attributes_for(:question) }
         end
         # should_set_the_flash_to "Error during question update."

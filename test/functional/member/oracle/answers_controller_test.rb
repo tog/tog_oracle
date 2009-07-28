@@ -1,4 +1,4 @@
-require "test_helper"
+require File.join(File.dirname(__FILE__), '..', '..', '..', 'test_helper')
 
 class Member::Oracle::AnswersControllerTest < ActionController::TestCase
   context "An Answer" do
@@ -7,7 +7,7 @@ class Member::Oracle::AnswersControllerTest < ActionController::TestCase
       @request    = ActionController::TestRequest.new
       @response   = ActionController::TestResponse.new
       
-      @user = create_user_without_validation
+      @user = Factory(:user, :login => 'chavez')
       @controller.stubs(:current_user).returns(@user)
       
       @question = Factory(:question)
